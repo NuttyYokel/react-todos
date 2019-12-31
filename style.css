@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.nav-bar {
+  margin: 0;
+  padding: 0.2rem 2rem;
+  list-style-type: 'none';
+  background-color: #925;
+  color: #fde;
+}
+
+.nav-bar li {
+  display: inline-block;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.nav-bar li:hover {
+  color: #ed6;
+}
+
+.nav-bar li + li {
+  border-left: 1px solid gray;
+  padding-left: 1rem;
+}
+
+.main-content {
+  margin: 0 2rem;
+}
+
+.todo-list {
+  padding: 0;
+  list-style-type: none;
+}
+
+footer {
+  background-color: #444;
+  color: #ed6;
+  font-size: 0.7rem;
+  line-height: 1.2rem;
+  padding: 0.2rem 2rem;
+}
+
+.app-container {
+  height: 100vh;
+  max-height: 100vh;
+  display: grid;
+  align-content: stretch;
+  grid-template-rows: 1.5rem auto 1.5rem;
+}
