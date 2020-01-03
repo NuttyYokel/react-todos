@@ -35,3 +35,18 @@ footer {
   grid-template-columns: 1fr;
   grid-template-rows: min-content auto min-content;
 }
+
+.login {
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: 2px;
+}
+
+.login:hover {
+  color: #444;
+}
+
+.login:active {
+  margin-top: 2px;
+  margin-bottom: 0;
+}

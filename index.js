@@ -11,7 +11,7 @@ class App extends React.Component {
       <section className='app-container'>
         <header>
           <nav>menu items</nav>
-          <section className='login'>Log in</section>
+          <a className='login'>Log in</a>
         </header>
         <main>Some content</main>
         <footer>zi footer</footer>
