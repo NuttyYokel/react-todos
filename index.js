@@ -6,7 +6,11 @@ class App extends React.Component {
     super();
     this.state = {
       firstName: '',
-      lastName: ''
+      lastName: '',
+      description: '',
+      isFriendly: true,
+      gender: '',
+      color: 'red'
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -21,21 +25,81 @@ class App extends React.Component {
           name='firstName'
           onChange={this.handleChange}
           value={this.state.firstName}
-        ></input>
+        />
         <input
           type='text'
           placeholder='First Name'
           name='lastName'
           onChange={this.handleChange}
           value={this.state.lastName}
-        ></input>
+        />
+        <br />
+        <textarea
+          placeholder='Short description'
+          name='description'
+          onChange={this.handleChange}
+          value={this.state.description}
+        />
+        <br />
+        <label>
+          <input
+            type='checkbox'
+            name='isFriendly'
+            checked={this.state.isFriendly}
+            onChange={this.handleChange}
+          />
+          Is friendly
+        </label>
+        <br />
+        <label>
+          <input
+            type='radio'
+            name='gender'
+            value='female'
+            checked={this.state.gender === 'female'}
+            onChange={this.handleChange}
+          />
+          Female
+        </label>
+
+        <label>
+          <input
+            type='radio'
+            name='gender'
+            value='male'
+            checked={this.state.gender === 'male'}
+            onChange={this.handleChange}
+          />
+          Male
+        </label>
+        <br />
+        <label>Your favourite color</label>
+        <select
+          value={this.state.color}
+          onChange={this.handleChange}
+          name='color'
+        >
+          <option value='red'>Red</option>
+          <option value='green'>Green</option>
+          <option value='blue'>Blue</option>
+          <option value='yellow'>Yellow</option>
+        </select>
+
+        <h3>
+          You are {this.state.isFriendly ? 'a' : 'not a'} friendly
+          {this.state.gender ? ' ' + this.state.gender : ' person'}
+          {this.state.firstName ? ' called ' + this.state.firstName : ''}, who
+          likes the color {this.state.color}.
+        </h3>
       </form>
     );
   }
 
   handleChange(event) {
-    const value = event.target.value;
-    const name = event.target.name;
+    let { value, name, type, checked } = event.target;
+    if (type === 'checkbox') {
+      value = checked;
+    }
     this.setState(oldState => ({
       ...oldState,
       [name]: value
