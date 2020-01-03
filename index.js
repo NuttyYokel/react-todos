@@ -14,11 +14,12 @@ class App extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <input
           type='text'
           placeholder='First Name'
@@ -91,6 +92,8 @@ class App extends React.Component {
           {this.state.firstName ? ' called ' + this.state.firstName : ''}, who
           likes the color {this.state.color}.
         </h3>
+
+        <button>Submit</button>
       </form>
     );
   }
@@ -104,6 +107,11 @@ class App extends React.Component {
       ...oldState,
       [name]: value
     }));
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log('submitting', this.state);
   }
 }
 
