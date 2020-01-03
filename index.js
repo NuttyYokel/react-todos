@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Game from './Game';
 
 class App extends React.Component {
   constructor() {
@@ -22,7 +23,13 @@ class App extends React.Component {
             </a>
           </section>
         </header>
-        <main>Some content</main>
+        <main>
+          {this.state.isLoggedIn ? (
+            <Game />
+          ) : (
+            <h2 className='login-page'>Please log in</h2>
+          )}
+        </main>
         <footer>zi footer</footer>
       </section>
     );
