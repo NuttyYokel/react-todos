@@ -7,111 +7,120 @@ class App extends React.Component {
     this.state = {
       firstName: '',
       lastName: '',
-      description: '',
-      isFriendly: true,
-      gender: '',
-      color: 'red'
+      age: '',
+      dietaryRestrictions: {
+        lactose: false,
+        gluten: false,
+        peanut: false,
+        kosher: false,
+        vegan: false
+      }
     };
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          type='text'
-          placeholder='First Name'
-          name='firstName'
-          onChange={this.handleChange}
-          value={this.state.firstName}
-        />
-        <input
-          type='text'
-          placeholder='First Name'
-          name='lastName'
-          onChange={this.handleChange}
-          value={this.state.lastName}
-        />
-        <br />
-        <textarea
-          placeholder='Short description'
-          name='description'
-          onChange={this.handleChange}
-          value={this.state.description}
-        />
-        <br />
-        <label>
-          <input
-            type='checkbox'
-            name='isFriendly'
-            checked={this.state.isFriendly}
-            onChange={this.handleChange}
-          />
-          Is friendly
-        </label>
-        <br />
-        <label>
-          <input
-            type='radio'
-            name='gender'
-            value='female'
-            checked={this.state.gender === 'female'}
-            onChange={this.handleChange}
-          />
-          Female
-        </label>
-
-        <label>
-          <input
-            type='radio'
-            name='gender'
-            value='male'
-            checked={this.state.gender === 'male'}
-            onChange={this.handleChange}
-          />
-          Male
-        </label>
-        <br />
-        <label>Your favourite color</label>
-        <select
-          value={this.state.color}
-          onChange={this.handleChange}
-          name='color'
-        >
-          <option value='red'>Red</option>
-          <option value='green'>Green</option>
-          <option value='blue'>Blue</option>
-          <option value='yellow'>Yellow</option>
-        </select>
-
-        <h3>
-          You are {this.state.isFriendly ? 'a' : 'not a'} friendly
-          {this.state.gender ? ' ' + this.state.gender : ' person'}
-          {this.state.firstName ? ' called ' + this.state.firstName : ''}, who
-          likes the color {this.state.color}.
-        </h3>
-
-        <button>Submit</button>
-      </form>
-    );
-  }
-
-  handleChange(event) {
-    let { value, name, type, checked } = event.target;
+  handleInputChange(event) {
+    const { name, value, type, checked } = event.target;
     if (type === 'checkbox') {
-      value = checked;
+      this.setState(oldState => ({
+        ...oldState,
+        dietaryRestrictions: {
+          ...oldState.dietaryRestrictions,
+          [name]: checked
+        }
+      }));
+    } else {
+      this.setState({ [name]: value });
     }
-    this.setState(oldState => ({
-      ...oldState,
-      [name]: value
-    }));
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('submitting', this.state);
+    console.log(this.state);
+  }
+
+  render() {
+    return (
+      <div className='main-container'>
+        <form className='person-form' onSubmit={this.handleSubmit}>
+          <input
+            name='firstName'
+            value={this.state.firstName}
+            onChange={this.handleInputChange}
+            placeholder='First Name'
+          />
+          <input
+            name='lastName'
+            value={this.state.lastName}
+            onChange={this.handleInputChange}
+            placeholder='Last Name'
+          />
+          <input
+            name='age'
+            value={this.state.age}
+            onChange={this.handleInputChange}
+            placeholder='Age'
+          />
+
+          <label>Dietary restrictions</label>
+          <label>
+            <input
+              type='checkbox'
+              name='lactose'
+              onChange={this.handleInputChange}
+              checked={this.state.dietaryRestrictions.lactose}
+            />
+            Lactose
+          </label>
+          <label>
+            <input
+              type='checkbox'
+              name='gluten'
+              onChange={this.handleInputChange}
+              checked={this.state.dietaryRestrictions.gluten}
+            />
+            Gluten
+          </label>
+          <label>
+            <input
+              type='checkbox'
+              name='peanut'
+              onChange={this.handleInputChange}
+              checked={this.state.dietaryRestrictions.peanut}
+            />
+            Peanut
+          </label>
+          <label>
+            <input
+              type='checkbox'
+              name='kosher'
+              onChange={this.handleInputChange}
+              checked={this.state.dietaryRestrictions.kosher}
+            />
+            Kosher
+          </label>
+          <label>
+            <input
+              type='checkbox'
+              name='vegan'
+              onChange={this.handleInputChange}
+              checked={this.state.dietaryRestrictions.vegan}
+            />
+            Vegan
+          </label>
+
+          <button className='submit-button'>Submit</button>
+        </form>
+
+        <section className='overview-container'>
+          <h2>Entered information:</h2>
+          <p>Your name: {this.state.firstName ? this.state.firstName : '?'}</p>
+          <p>Your age: {this.state.age ? this.state.age : '?'}</p>
+        </section>
+      </div>
+    );
   }
 }
 
