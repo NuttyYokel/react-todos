@@ -1,3 +1,97 @@
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Tenor Sans', sans-serif;
+  margin: 0;
+  background-color: #ddb;
+}
+
+nav {
+  background-color: #927;
+  color: #ffd;
+  padding: 1px 60px;
+  border-bottom: 1px solid #514;
+  border-top: 1px solid #b39;
+
+  display: flex;
+  justify-content: flex-start;
+}
+
+main {
+  margin: 0 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 15px;
+}
+
+.image-container {
+  position: relative;
+  flex: 1;
+  padding: 5px 10px;
+  max-width: 400px;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  box-shadow: 1px 1px 4px 0 #fff, -1px -1px 4px 0 #978;
+}
+
+.image-container .text {
+  position: absolute;
+  color: white;
+  left: 0px;
+  width: 100%;
+  text-align: center;
+  overflow-wrap: break-word;
+  text-shadow: 0 -2px black, -2px 0 black, 0 2px black, 2px 0 black,
+    2px 2px black, -2px -2px black, 2px -2px black, -2px 2px black;
+  font-weight: 700;
+  font-family: Arial;
+  text-transform: uppercase;
+}
+
+.image-container .top {
+  top: -10px;
+}
+
+.image-container .bottom {
+  bottom: -10px;
+}
+
+.input-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container form input {
+  margin-top: 5px;
+  border-radius: 2px;
+  border: none;
+  padding: 2px 5px;
+  background-color: #ffe;
+  box-shadow: 1px 1px 3px 0 #cbb, -1px -1px 3px 0 #eaeada;
+}
+
+.input-container form button {
+  cursor: pointer;
+  border: none;
+  padding: 2px;
+  margin-top: 15px;
+  background-color: #ddb;
+  border-radius: 2px;
+  box-shadow: 3px 3px 6px 0 #cbb, -3px -3px 6px 0 #eaeada;
+  text-shadow: 1px 1px #ffe, -1px -1px #bb9;
+  outline: none;
+  color: #888;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.input-container form button:hover {
+  color: #a49;
+}
+
+.input-container form button:active {
+  margin-top: 17px;
+  box-shadow: 1px 1px 3px 0 #f5f5e5, -1px -1px 3px 0 #baa;
 }
