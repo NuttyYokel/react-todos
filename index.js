@@ -118,6 +118,12 @@ class App extends React.Component {
           <h2>Entered information:</h2>
           <p>Your name: {this.state.firstName ? this.state.firstName : '?'}</p>
           <p>Your age: {this.state.age ? this.state.age : '?'}</p>
+          <p>
+            Your dietary restrictions:{' '}
+            {Object.keys(this.state.dietaryRestrictions)
+              .filter(key => this.state.dietaryRestrictions[key])
+              .join(', ')}
+          </p>
         </section>
       </div>
     );
